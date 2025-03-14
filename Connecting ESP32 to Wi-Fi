@@ -1,1 +1,22 @@
+#include <WiFi.h>
 
+const char* ssid = "Chamara Dilshan - 2.4G";         
+const char* password = "Telecom@2428"; 
+
+void setup() {
+  Serial.begin(115200);   
+  WiFi.begin(ssid, password);
+
+  Serial.print("Connecting to WiFi");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(1000);
+  }
+  Serial.println("\nConnected!");
+  Serial.print("IP Address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void loop() {
+  // Repeat
+}
