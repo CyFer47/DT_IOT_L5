@@ -1,0 +1,33 @@
+#define TRIG_PIN 5    //  TRIG pin
+#define ECHO_PIN 18   //  ECHO pin
+
+void setup() {
+    Serial.begin(115200);     
+    pinMode(TRIG_PIN, OUTPUT); 
+    pinMode(ECHO_PIN, INPUT); 
+}
+
+void loop() {
+    long duration; 
+    float distance;
+
+    // Send a short 10-microsecond pulse to TRIG pin
+    digitalWrite(TRIG_PIN, LOW);
+    delayMicroseconds(2);
+    digitalWrite(TRIG_PIN, HIGH);
+    delayMicroseconds(10);
+    digitalWrite(TRIG_PIN, LOW);
+
+    
+    duration = pulseIn(ECHO_PIN, HIGH);
+
+    //  distance (in cm)
+    distance = duration * 0.034 / 2;
+
+    // Display the result
+    Serial.print("Distance: ");
+    Serial.print(distance);
+    Serial.println(" cm");
+
+    delay(1000); // Wait for 1 second before the next reading
+}
