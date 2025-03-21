@@ -1,0 +1,20 @@
+#include <Arduino.h>
+#include <LiquidCrystal.h>
+
+// Initialize LCD with pin connections
+LiquidCrystal lcd(21, 22, 18, 19, 23, 5);
+
+void setup() {
+    lcd.begin(16, 2); // Initialize the LCD as 16x2
+    lcd.print("Hello, ESP32!"); // Display text on startup
+}
+
+void loop() {
+    lcd.setCursor(0, 1); // Move cursor to second row
+    lcd.print("Temp: 25 C");  // Example text
+    delay(2000); // Delay to allow text visibility
+
+    lcd.setCursor(0, 1);
+    lcd.print("Humidity: 60%"); // Example text
+    delay(2000);
+}
